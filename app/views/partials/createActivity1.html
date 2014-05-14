@@ -1,0 +1,204 @@
+<div ng-include="'partials/navbar'"></div>
+<!-- Add cover and thumbnail -->
+<div class="add-cover-thumbnail">
+	<div class="cover-photo">
+		<div class='cover-instructions'>
+			<span class="glyphicon glyphicon-picture"></span> Make your cover photo beautiful
+			<div></div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="offset-element">
+			<div class="thumbnail-photo">
+				<div class='thumbnail-instructions text-center'>
+					Your <br> Thumbnail
+				</div>
+			</div>
+			<div class="sense-button see" ng-click="senses.see = !senses.see" ng-class="{selected: senses.see}">
+				<span class="glyphicon glyphicon-eye-open"></span>
+			</div>
+			<div class="sense-button smell " ng-click="senses.smell = !senses.smell" ng-class="{selected: senses.smell}">
+				<span class="fa fa-music"></span>
+			</div>
+			<div class="sense-button taste" ng-click="senses.taste = !senses.taste" ng-class="{selected: senses.taste}">
+				<span class="glyphicon glyphicon-plus"></span>
+			</div>
+			<div class="sense-button hear" ng-click="senses.hear = !senses.hear" ng-class="{selected: senses.hear}">
+				<span class="glyphicon glyphicon-map-marker" ></span>
+			</div>
+			<div class="sense-button touch" ng-click="senses.touch = !senses.touch" ng-class="{selected: senses.touch}">
+				<span class="glyphicon glyphicon-plus"></span>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container create-activity">
+	<div class="row">
+		<div class='col-xs-1'>
+		</div>
+		<div class='col-xs-10'>
+			<!-- Where and What -->
+			<div class="row">
+				<div class='col-xs-6'>
+					<div class="form-group">
+						<label class="form-label form-label-heading">1. </label>
+						<label class="form-label">Where</label>
+						<label class="form-label form-label-required">*</label>
+						<input type="text" ng-model="asyncSelected" placeholder="Places" typeahead="places as places.name for places in getPlaces($viewValue)" typeahead-loading="loadingLocations" class="form-control" typeahead-min-length="3" typeahead-on-select='onSelect($item, $model, $label)' ui-blur="inputLeave()" ng-change="inputChange()">
+					</div>
+				</div>
+				<div class='col-xs-6'>
+					<div class="form-group">
+						<label class="form-label form-label-heading">2. </label>
+						<label class="form-label">What</label>
+						<label class="form-label form-label-required">*</label>
+						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Activity">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="form-group pull-right" ng-show="newPlace">
+					<button type="submit" class="btn btn-primary">Create</button>
+				</div>
+				<!-- Place Create -->
+				<div class="form-group" ng-show="false">
+					<div class="form-group">
+						<div class="map">
+							<google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options"></google-map>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon">#</span>
+							<input type="text" class="form-control" placeholder="Tags">
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			<!-- Time -->
+			<div class="row">
+				<div class='col-xs-12'>
+					<div class="form-group">
+						<label class="form-label form-label-heading">3. </label>
+						<label class="form-label">Time</label>
+						<label class="form-label form-label-required">*</label>
+						<hr class="form-label-line">
+					</div>
+				</div>
+			</div>
+			<!-- Meta -->
+			<div class="row">
+				<div class='col-xs-12'>
+					<div class="form-group">
+						<label class="form-label form-label-heading">4. </label>
+						<label class="form-label">Extra Info</label>
+						<hr class="form-label-line">
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-xs-1 action-bar">
+			<button type="button" class="btn btn-default">
+			<span class="glyphicon glyphicon-pencil"></span>
+			</button>
+			<button type="button" class="btn btn-default">
+			<span class="glyphicon glyphicon-camera"></span>
+			</button>
+			<button type="button" class="btn btn-default">
+			<span class="glyphicon glyphicon-plus"></span>
+			</button>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-xs-1">
+		</div>
+		<div class="col-xs-10">
+			<form>
+				<!-- Place Name -->
+				<div class="form-group">
+					{{ asyncSelected }}
+					<div class="input-group">
+						<span class="input-group-addon">@</span>
+						<input type="text" ng-model="asyncSelected" placeholder="Places" typeahead="places as places.name for places in getPlaces($viewValue)" typeahead-loading="loadingLocations" class="form-control" typeahead-min-length="3" typeahead-on-select='onSelect($item, $model, $label)' ui-blur="inputLeave()" ng-change="inputChange()">
+					</div>
+				</div>
+				<!-- Activity Panel -->
+				<div class="create-panel">
+					<input type="text" class="form-control" placeholder="Activity">
+					<div class="body">
+						<div class="side left-side">
+							<table class="table table-hover">
+								<th class="table-heading">
+									Info
+								</th>
+								<th class="table-heading">
+									Tag
+								</th>
+								<tr>
+									<td>Cost</td>
+									<td>R50</td>
+								</tr>
+								<tr ng-mouseover="rowHover = true" ng-mouseleave="rowHover = false" class="danger">
+									<td>Cost</td>
+									<td>R50sadsassadsdssdsd</td>
+									<td style="width: 10px;">
+										<span ng-show="rowHover">x</span>
+									</td>
+								</tr>
+								<tr ng-mouseover="rowHover = true" ng-mouseleave="rowHover = false" class="danger">
+									<td>Cost</td>
+									<td><input type="text" placeholder="Place" style="width: 100%;"></td>
+									<td style="width: 10px;">
+										<span ng-show="rowHover">x</span>
+									</td>
+								</tr>
+							</table>
+							<div class="button-add-divider">
+								<button type="button" class="btn btn-default center-block">
+								<span class="glyphicon glyphicon-plus"></span>
+								</button>
+								<hr>
+							</div>
+							
+						</div>
+						<div class="side right-side">
+							<div class="title-divider">
+								Senses
+								<hr>
+								<!-- Activity Senses -->
+								<div class="senses-select">
+									<button type="button" class="btn btn-default">
+									<span class="glyphicon glyphicon-eye-open"></span>
+									</button>
+									<button type="button" class="btn btn-default">
+									<span class="fa fa-music"></span>
+									</button>
+									<button type="button" class="btn btn-default">
+									<span class="glyphicon glyphicon-plus"></span>
+									</button>
+									<button type="button" class="btn btn-default">
+									<span class="glyphicon glyphicon-map-marker"></span>
+									</button>
+									<button type="button" class="btn btn-default">
+									<span class="glyphicon glyphicon-plus"></span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Submit -->
+				<div class="form-group pull-right">
+					<button type="submit" class="btn btn-primary">Create</button>
+				</div>
+			</form>
+		</div>
+		<div class="col-xs-1 action-bar">
+		</div>
+	</div>
+</div>
+</div>

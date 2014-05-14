@@ -1,0 +1,988 @@
+$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+
+@import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+@import 'flex.scss';
+
+// -----------------------
+// Flat Color Pallete
+// -----------------------
+
+// Green
+$turquoise: #1abc9c;
+$emerald: #2ecc71;
+$greensea: #16a085;
+$nephritis: #27ae60;
+// Blue
+$peterriver: #3498db;
+$belizehole: #2980b9;
+// Purple
+$amethyst: #9b59b6;
+$wisteria: #8e44ad;
+// Grey
+$wetasphalt: #34495e;
+$midnightblue: #2c3e50;
+// Yellow
+$sunflower: #f1c40f;
+$orange: #f39c12;
+// Orange
+$carrot: #e67e22;
+$pumpking: #d35400;
+// Red
+$alizarin: #e74c3c;
+$pomegranate: #c0392b;
+// Light Gray
+$clouds: #ecf0f1;
+$silver: #bdc3c7;
+// Dark Gary
+$concrete: #95a5a6;
+$asbestos: #7f8c8d;
+
+// -----------------------
+// General
+// -----------------------
+
+.multiline-text {
+    white-space: pre-wrap;
+}
+
+// -----------------------
+// Begin Here
+// -----------------------
+
+body {
+    // background-color: $clouds;
+}
+
+// A simple fix to align the icon
+#search-icon {
+    top: 0;
+}
+
+.list-group-item.activity {
+    margin-top: 10px;
+}
+
+.heading {
+    // margin-top: 40px;
+    margin-bottom: 0px;
+    .the {
+        font-size: 20px;
+        font-family: 'Raleway', 'sans-serif';
+    }
+
+    .ish {
+        font-size: 50px;
+        font-family: 'Oswald', 'sans-serif';
+    }
+}
+
+.activity {
+    border-bottom: 10px solid;
+}
+
+//---------------------------------------------------------
+// Activity Explore Page - ie. Card View
+//---------------------------------------------------------
+
+$thumbnail: 100px;
+$border-sense: 10px;
+$card-spacing: 10px;
+$activity-size: 28px;
+$place-size: 20px;
+$place-color: gray;
+$rating-size: 25px;
+$padding: 5px;
+
+.activity-card {
+    @include flexbox;
+    margin-top: $card-spacing;
+    position: relative;
+    border: 1px solid lightgray;
+    overflow: hidden;
+    .details {
+        @include flex-grow(1);
+        width: 1px;
+        @include flexbox;
+        @include flex-direction(column);
+        @include justify-content(space-between);
+        // background-color: red;
+        height: $thumbnail;
+
+        border-bottom: $border-sense solid;
+
+        .activity-header {
+            text-align: center;
+            vertical-align: text-bottom;
+            font-size: $activity-size;
+            font-family: 'Oswald', 'sans-serif';
+        }
+
+        .place-header {
+            // padding-top: 2px;
+            text-align: center;
+            font-size: $place-size;
+            color: $place-color;
+            font-family: 'Raleway', 'sans-serif';
+        }
+
+        .meta {
+            @include flexbox;
+            height: $rating-size;
+            margin: 0 $padding;
+            .rating {
+                line-height: $rating-size;
+                font-size: $rating-size;
+                font-family: 'Yanone Kaffeesatz', 'sans-serif';
+                
+                // position: relative;
+                // top: 6px;
+            }
+
+            .sense {
+                @include flex-grow(1);
+                width: 1px;
+                font-size: 20px;
+                color: gray;
+                font-family: 'Open Sans Condensed', 'sans-serif';
+                text-align: right;
+            }
+        }
+    }
+
+    .thumb {
+        background-color: gray;
+        width: $thumbnail;
+        height: $thumbnail;
+        img {
+            width: $thumbnail;
+            height: $thumbnail;
+        }
+    }
+
+    .action-menu {
+        background-color: rgba(0, 0, 0, 0.4);
+        
+        position: absolute;
+        top: 0;
+        right: -40px;
+        height: 100%;
+        @include flexbox;
+    @include flex-direction(column);
+    @include justify-content(space-around);
+        -webkit-transition: all 0.5s ease; /* For Safari 3.1 to 6.0 */
+        transition: all 0.5s ease;
+
+        .btn-action {
+             // Size
+            height: 40px;
+            width: 40px;
+            // Center the Content
+            @include flexbox;
+            @include align-items(center);
+            @include justify-content(center);
+            background-color: transparent;
+            color: white;
+        }
+
+        .btn-action:hover {
+            background-color: white;
+            color: black;
+        }
+    }
+
+}
+
+// Hover effects
+.activity-card:hover {
+    background-color:  $clouds;
+    cursor: pointer;
+    .action-menu {
+    right: 0;
+    }
+}
+
+
+//---------------------------------------------------------
+// Activity Page - ie. Entire Activity View
+//---------------------------------------------------------
+$cover-height: 360px;
+$activity-height: 40px;
+$section-height: 40px;
+$section-heading: 30px;
+$chevron-size: 15px;
+$section-spacing: 5px;
+$border-sense: 5px;
+$border-review: 5px;
+
+.cover {
+    top:-50px;
+    height: $cover-height;
+    background-color: $clouds;
+    overflow: hidden;
+    position: relative;
+     background: url(http://img.covry.com/covers/cv/biscuit-and-coffee-cup.jpg)  no-repeat center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+    img {
+    //     height: 100%;
+        width: 100%;
+    }
+
+    .activity-header {
+        position: absolute;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        height: $activity-height;
+        bottom: 0px;
+
+        span {
+            font-size: $activity-height;
+            height: $activity-height;
+            line-height: $activity-height;
+            vertical-align: center;
+            color: white;
+            
+        }
+
+        .activity-name {
+            font-family: 'Oswald', 'sans-serif';
+            padding-left: 10px;
+        }
+
+        .glyphicon-chevron-right {
+            height: $activity-height;
+            line-height: $activity-height;
+             vertical-align: center;
+            font-size: $chevron-size;
+        }
+    }
+}
+
+.section {
+    border: 1px solid lightgray;
+
+    margin-top: $section-spacing;
+    .section-heading {
+        padding: 0 $padding;
+        background-color: $clouds;
+        height: $section-height;
+        @include flexbox;
+        @include justify-content(space-between);
+        .full {
+            font-size: $section-height;
+            height: $section-height;
+            line-height: $section-height;
+            vertical-align: center;
+        }
+
+        .full-80 {
+            font-size: 30px;
+            height: $section-height;
+            line-height: $section-height;
+            vertical-align: center;
+        }
+
+        .glyphicon-chevron-right {
+            font-size: $chevron-size;
+        }
+
+        .header-box {
+            height: $section-height;
+            @include flexbox;
+            .details {
+                div {
+                    font-family: 'Raleway', 'sans-serif';
+                    color: gray;
+                }
+            }
+
+        }
+
+        .details {
+            padding-left: 10px;
+            .button { 
+                margin-left: 10px;
+                height: 80%;
+            }
+        }
+    }
+
+    .section-body {
+        // margin: 10px 10px;
+    }
+}
+
+.section.rating {
+    border-left: $border-review solid $emerald;
+    border-right: $border-review solid $alizarin;
+
+    .section-heading {
+        .percentage {
+            font-family: 'Yanone Kaffeesatz', 'sans-serif';
+        }
+    }
+
+    .section-body {
+        @include flexbox;
+        .positive {
+            @include flex-grow(1);
+            width: 1px;
+        }
+        .negative {
+            @include flex-grow(1);
+            width: 1px;
+
+            border-left: 1px dotted gray;
+        }
+    }
+
+    .load-more {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+.section.info {
+    border-top: $border-sense solid lightgray;
+
+    .section-body {
+        @include flexbox;
+
+        .description {
+            @include flex-grow(1);
+            width: 1px;
+            padding: 15px 25px;
+
+        }
+
+        .meta {
+            @include flex-grow(1);
+            width: 1px;
+            padding: 15px 25px;
+            border-left: 1px dotted gray;
+            .dl-horizontal {
+                dt {
+                    text-align: left;
+                }
+            }
+        }
+    }
+
+
+}
+
+$avatar-size: 60px;
+$tagline-size: 20px;
+
+.review {
+    // padding: 10px 30px;
+    .media-object  {
+        background-color: $clouds;
+        height: $avatar-size;
+        width: $avatar-size;
+    }
+
+    .media-heading {
+        text-align: right;
+    }
+}
+
+.review {
+    padding: 15px 25px;
+    .info {
+        @include flexbox;
+        .avatar {
+            background-color: $clouds;
+            height: $avatar-size;
+            width: $avatar-size;
+        }
+
+        .tagline1 {
+            font-family: 'Oswald', 'sans-serif';
+            vertical-align: bottom;
+            text-align: right;
+            font-size: 20px;
+            @include flex-grow(1);
+            width: 1px;
+            @include flexbox;
+            @include align-items(flex-end);
+            @include justify-content(flex-end);
+        }
+    }
+
+    .body {
+        padding-top: 10px;
+        padding-left: 15px;
+    }
+
+    .actions {
+        padding-top: 10px;
+        // background-color: $clouds;
+        color: lightgray;
+    }
+
+
+}
+
+.section.place {
+    .section-body {
+        @include flexbox;
+        .details {
+            @include flex-grow(1);
+            width: 1px;
+            padding: 15px 25px;
+
+            .dl-horizontal {
+                dt {
+                    text-align: left;
+                }
+            }
+        }
+
+        .location {
+            @include flex-grow(1);
+            width: 1px;
+            padding: 15px 25px;
+
+            .map {
+                width: 100%;
+                height: 200px;
+                background-color: $clouds;
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+.action-bar {
+    margin-top: 5px;
+
+    .btn {
+        margin-bottom: 5px;
+    }
+}
+
+.review-form {
+    padding: 10px 0;
+}
+
+//-----------------------------------------
+// Navbar
+//------------------------------------------
+
+$activity-navbar-height: 40px;
+
+
+.standard-navbar {
+    background-color: white;
+    margin-bottom: 0;
+    border-bottom: 0;
+}
+
+.nav-pills {
+    * {
+        color: black;
+    }
+
+    li {
+        .active {
+            a {
+                background-color: gray;
+            }
+            
+        }
+    }
+}
+
+.absolute-header {
+    position:fixed;
+    top: 0;
+    left: 0;
+    height: $activity-navbar-height;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    @include flexbox;
+    @include justify-content(space-between);
+    padding: 0 10px;
+    padding-right: 20px;
+    color: white;
+    border-bottom: 1px solid lightgray;
+
+
+    .navbar-item {
+            height: $activity-navbar-height;
+        }
+
+        .left-items {
+            @include flexbox;
+            @include justify-content(space-around);
+            width: 20%;
+        }
+
+        .navigation {
+            font-family: 'Open Sans Condensed', 'sans-serif';
+            width: 20%;
+            @include flexbox;
+            @include justify-content(space-around);
+        }
+
+        .location{
+            font-family: 'Oswald', 'sans-serif';
+            font-size: 40px;
+            @include flexbox;
+            @include align-items(center);
+            
+        }
+
+        .nav-item {
+            font-size: 20px;
+            @include flexbox;
+            @include align-items(flex-end);      
+        }
+
+        .glyphicon {
+            font-size: 20px;
+            @include flexbox;
+            @include align-items(center);      
+        }
+
+        .logo {
+            font-size: 40px;
+            @include flexbox;
+            @include align-items(center);      
+            border: 1px solid white;
+        }
+
+}
+
+.inverse {
+        background-color: white;
+        color: black;
+    }
+
+.main-navbar {
+    margin-bottom: 0;
+    background-color: white;
+    border: 0;
+    padding: 0 10px;
+    z-index: 1;
+    .navbar-brand {
+        color: black;        
+    }
+
+    .nav-item {
+        color: black !important;
+    }
+}
+
+.main-navbar.transparent {
+    background-color: rgba(0, 0, 0, 0.4);
+    .navbar-brand {
+        color: white;        
+    }
+
+    .nav-item {
+        color: white !important;
+    }
+}
+
+//-----------------------------------------
+// Footer
+//------------------------------------------
+
+.footer-text {
+    color: lightgray;
+    // text-align: center;
+}
+
+//-----------------------------------------
+// Profile Page
+//------------------------------------------
+
+$profile-pic-size: 200px;
+$profile-border-thickness: 5px;
+$progress-bar-height: 20px;
+
+.profile-pic {
+    width: $profile-pic-size;
+    height: $profile-pic-size;
+    border: $profile-border-thickness solid gray;
+}
+
+.profile {
+    .progress {
+        height: $progress-bar-height;
+        margin-bottom: 10px;
+    }
+
+    .progress-bar {
+        height: $progress-bar-height;
+    }
+
+    .dl-horizontal {
+        dt {
+            text-align: left;
+        }
+    }
+}
+
+.personal-details {
+    border-top: 1px solid transparent;
+}
+
+.personal-details:hover {
+    border-color: gray;
+}
+
+//-----------------------------------------
+// Create Activity
+//-----------------------------------------
+
+$map-height: 300px;
+
+.add-cover-thumbnail {
+    .cover-photo {
+        width: 100%;
+        height: 300px;
+        background-color: $clouds;
+        @include flexbox;
+        @include justify-content(center);
+        @include align-items(center);
+        border-bottom: 5px solid gray;
+        .cover-instructions {
+            font-size: 32px;
+            color: $concrete;
+        }
+    }
+
+    .offset-element {
+        position: relative;
+        top: -75px;
+        @include flexbox;
+        @include align-items(flex-end);
+
+        .btn {
+            margin-left: 10px;
+        }
+    }
+
+    .thumbnail-photo {
+        margin-right: 20px;
+        width: 150px;
+        height: 150px;
+        background-color: $concrete;
+        @include flexbox;
+        @include justify-content(center);
+        @include align-items(center);
+
+        .thumbnail-instructions {
+            font-size: 20px;
+            color: white;
+        }
+    }
+}
+
+.create-activity {
+    margin-top: -40px;
+    .map {
+        width: 100%;
+        height: $map-height;
+        background-color: $clouds;
+    }
+
+    .senses-select {
+        @include flexbox;
+        @include justify-content(space-around);
+    }
+
+    .create-panel {
+        margin-bottom: 20px;
+        .body {
+            margin-top: 3px;
+            border: 1px solid lightgray;
+            @include flexbox;
+
+            .side {
+                padding: 15px 25px;
+            }
+
+            .left-side {
+                @include flex-grow(1);
+                width: 1px;
+            }
+
+            .right-side {
+                @include flex-grow(1);
+                width: 1px;
+                border-left: 1px dotted gray;
+            }
+        }
+
+        .title-divider {
+            // font-size: 20px;
+            font-weight:bold;
+            hr {
+                margin-top: 0;
+                margin-bottom: 10px
+            }
+        }
+
+        .table-heading {
+            border-top: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+
+    
+
+    .angular-google-map-container { 
+        height: $map-height 
+    }
+
+ 
+
+    .form-label {
+        font-size: 20px;
+        color: gray;
+        font-family: 'Oswald', 'sans-serif';
+    }
+
+    .form-label-heading {
+        font-size: 25px;
+        color: lightgray;
+    }
+
+    .form-label-required{
+        color: #d9534f;
+    }
+
+    .form-label-line {
+        margin-top: 0;
+    }
+}
+
+.FlexEmbed--5by1:before {
+  padding-bottom: 25%;
+}
+
+.button-add-divider {
+    .btn {
+        -webkit-border-radius: 90px;
+        -moz-border-radius: 90px;
+        border-radius: 90px;
+    }
+
+    hr {
+        margin: 0;
+        position: relative;
+        top: -16px;
+        z-index: -1;
+    }
+}
+
+//-----------------------------------------
+// Sense Button
+//-----------------------------------------
+
+.sense-button {
+    // Size
+    height: 40px;
+    width: 40px;
+    // Space buttons out
+    margin: 0 5px;
+    // Center the Content
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(center);
+    // Round the edges
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    // Styling
+    background-color: $clouds;
+    border: 3px solid rgba(0, 0, 0, 0.4);
+    color: darkgray;
+    font-size: 20px;
+}
+
+.sense-button:hover {
+        border-color: transparent;
+        cursor: pointer;
+        color: white;
+}
+
+
+.sense-button.selected {
+    position: relative;
+    top: -10px;
+    border-width: 0 0 3px 0;
+    color: white;
+}
+
+// .see {
+//     border-color: $emerald;
+// }
+// .hear {
+//     border-color: $peterriver;
+// }
+
+// .touch {
+//     border-color: $amethyst;
+// }
+
+// .taste {
+//     border-color: $carrot;
+// }
+
+// .smell {
+//     border-color: $alizarin;
+// }
+
+.see:hover, .see.selected {
+    background-color: $emerald;
+}
+
+.hear:hover, .hear.selected {
+    background-color: $peterriver;
+}
+
+.touch:hover, .touch.selected  {
+    background-color: $amethyst;
+}
+
+.taste:hover, .taste.selected  {
+    background-color: $carrot;
+}
+
+.smell:hover, .smell.selected  {
+    background-color: $alizarin;
+}
+
+//-----------------------------------------
+// Modal Create
+//-----------------------------------------
+
+
+.modal-create {
+
+    .modal-header {
+        @include flexbox;
+        @include align-items(center);
+
+        .modal-title {
+            // display: inline;
+            // margin-right: 10px;
+            font-size: 20px;
+            color: gray;
+        }
+
+        .modal-title-main {
+            font-size: 25px;
+            color: black;
+        }
+    }
+
+    .modal-body {
+        .senses-group {
+            @include flexbox;
+        }
+
+    }
+
+    
+
+    .modal-footer {
+        .btn-link {
+            color: gray;
+        }
+    }
+
+    
+
+    .form-label {
+        font-size: 20px;
+        color: gray;
+        font-family: 'Oswald', 'sans-serif';
+    }
+
+    .form-label-heading {
+        font-size: 25px;
+        color: light;
+    }
+
+    .form-label-required{
+        color: #d9534f;
+    }
+
+    .form-label-line {
+        margin-top: 0;
+    }
+
+    .form-label-sub {
+        font-size: 15px;
+    }
+}
+
+.date-time-input {
+    .date-input {
+        display: inline;
+        width: 45%;
+    }
+
+    .time-input {
+        display: inline;
+        width: 45%;
+    }
+}
+
+.activity-time {
+    @include flexbox;
+
+    .time-dropdown {
+        margin-right: 10px;
+    }
+
+    .default-time {
+        @include flex-grow(1);
+        width: 1px;
+        @include flexbox;
+
+        div {
+            @include flex-grow(1);
+            width: 1px;
+        }
+    }
+}
+
+.day-specific {
+    @include flexbox;
+    @include flex-direction(column);
+    .day {
+        @include flexbox;
+        // @include flex-grow(1);
+        // width: 1px;
+        .btn-day {
+            width: 50px;
+        }
+
+            .default-time {
+            @include flex-grow(1);
+            width: 1px;
+            @include flexbox;
+            div {
+                @include flex-grow(1);
+                width: 1px;
+            }
+        }
+
+        
+    }
+}
+
+
+

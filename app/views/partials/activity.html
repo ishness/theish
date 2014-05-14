@@ -1,0 +1,192 @@
+<!-- Header -->
+<div ng-include="'partials/navbar'"></div>
+<div class="cover">
+  <!--   <div class="activity-header">
+    <span class="activity-name">{{ activity.name }}</span>
+  </div> -->
+  <!-- <img src="http://img.covry.com/covers/cv/biscuit-and-coffee-cup.jpg"> -->
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-11">
+      <!-- Info -->
+      <div class="section info" style="border-top-color: {{ activity.type.colour }};">
+        <div class="section-heading">
+          <div class="header-box">
+            <span class="full-80 glyphicon glyphicon-eye-open"></span>
+            <div class="details">
+              <div>Tonight</div>
+              <div>6pm</div>
+            </div>
+            
+          </div>
+          
+          
+          <span class="full-80 glyphicon glyphicon-chevron-right"></span>
+          
+        </div>
+        <div class="section-body">
+          <div class="description">
+            <div class="edit-description text-right">
+              <a>[Edit]</a>
+            </div>
+            <p class="multiline-text" editable-textarea="activity.info.description">{{ activity.info.description }}</p>
+          </div>
+          <div class="meta">
+            <div class="edit-description text-right">
+              <a>[Edit]</a>
+            </div>
+            <dl class="dl-horizontal">
+              <dt>Cost:</dt>
+              <dd>R50</dd>
+              <dt>Times:</dt>
+              <dd>6 pm - 10pm Everyday</dd>
+              <dt>External Links:</dt>
+              <dd>Blog Review</dd>
+              <dd>People are Awesome</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <!-- Rating -->
+      <div class="section rating">
+        <div class="section-heading">
+          <div class="header-box">
+            <span class="full percentage">{{ activity.rating.percentage }}%</span>
+            <div class="details">
+              <div>{{ activity.rating.voteCount }} Votes</div>
+              <div>{{ activity.rating.reviewCount }} Reviews</div>
+            </div>
+          </div>
+          <span class="pull-right full-80 glyphicon glyphicon-chevron-right"></span>
+        </div>
+        <div class="review-form" ng-show="showReview" id="review-form">
+          <form class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+              <div class="row form-group">
+                <div class="col-xs-6">
+                  <button type="submit" class="btn btn-success btn-block">
+                  <span class="glyphicon glyphicon-arrow-up"></span>
+                  </button>
+                </div>
+                <div class="col-xs-6">
+                  <button type="submit" class="btn btn-danger btn-block">
+                  <span class="glyphicon glyphicon-arrow-down"></span>
+                  </button>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Tagline">
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" rows="5" placeholder="Your Review"></textarea>
+              </div>
+              <div class="form-group">
+                <button type="button" class="btn btn-default btn-block" style="text-align:left; padding-left:10px;">
+                <span class="glyphicon glyphicon-picture"></span>
+                Add Photos
+                </button>
+              </div>
+              <div class="form-group pull-right">
+                <button type="submit" class="btn btn-primary">Post</button>
+              </div>
+            </div>
+          </form>
+          <hr>
+        </div>
+        <div class="section-body">
+          <div class="positive review">
+            <div class="review" ng-repeat="review in activity.rating.reviews">
+              <div class="info">
+                <img class="avatar img-circle" src="{{ review.user.avatar.url }}" alt="...">
+                <div class="tagline1">
+                  # {{ review.tagline }}
+                </div>
+              </div>
+              <div class="body">
+                <p class="multiline-text"> {{ review.review }} </p>
+              </div>
+              <div class="actions">
+                Like <span class="glyphicon glyphicon-heart"></span>
+              </div>
+              <hr>
+            </div>
+          </div>
+          <div class="negative review">
+            <div class="info">
+              <img class="avatar img-circle" src="https://s3.amazonaws.com/theishapp/Original/murray.jpg" alt="...">
+              <div class="tagline1">
+                #theBestCurry
+              </div>
+            </div>
+            <div class="body">
+              <p class="multiline-text">
+              {{ text | limitTo: textLength }}
+              <a>...Read More</a>
+              </p>
+            </div>
+            <div class="actions">
+              Like <span class="glyphicon glyphicon-heart"></span>
+            </div>
+            <hr>
+          </div>
+        </div>
+        <button type="button" class="btn btn-default center-block load-more">
+        Load More
+        </button>
+      </div>
+      <!-- Place -->
+      <div class="section place">
+        <div class="section-heading">
+          <div class="header-box">
+            <span class="full-80 percentage" editable-text="activity.place.name">@{{ activity.place.name }}</span>
+            <div class="details">
+              <div>82%</div>
+              <div>3 activities</div>
+            </div>
+          </div>
+          <span class="pull-right full-80 glyphicon glyphicon-chevron-right"></span>
+        </div>
+        <div class="section-body">
+          <div class="details">
+            <dl class="dl-horizontal">
+              <dt>Cost:</dt>
+              <dd>R50</dd>
+              <dt>Times:</dt>
+              <dd>6 pm - 10pm Everyday</dd>
+              <dt>External Links:</dt>
+              <dd>Blog Review</dd>
+              <dd>People are Awesome</dd>
+            </dl>
+          </div>
+          <div class="location">
+            <address>
+            <strong>Twitter, Inc.</strong><br>
+            795 Folsom Ave, Suite 600<br>
+            San Francisco, CA 94107<br>
+            </address>
+            <div class="map">
+              <img src="http://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=300x200&maptype=roadmap&sensor=false">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <p>{{ activity }}</p>
+  </div> -->
+  <div class="col-xs-1 action-bar">
+    <button type="button" class="btn btn-default">
+    <span class="glyphicon glyphicon-bookmark"></span>
+    </button>
+    <button type="button" class="btn btn-default">
+    <span class="glyphicon glyphicon-arrow-up"></span>
+    </button>
+    <button type="button" class="btn btn-default">
+    <span class="glyphicon glyphicon-arrow-down"></span>
+    </button>
+    <button type="button" class="btn btn-default" ng-click="toggleReview()">
+    <span class="glyphicon glyphicon-pencil"></span>
+    </button>
+  </div>
+</div>
+<div ng-include="'partials/footer'"></div>

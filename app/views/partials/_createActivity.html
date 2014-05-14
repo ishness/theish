@@ -1,0 +1,75 @@
+<div class="modal-body">
+	<!-- Activity Name -->
+	<div class="form-group">
+		<label class="form-label">What</label>
+		<input type="text" ng-model="newActivity.name" placeholder="{{type}} Name" typeahead="activity.name as activity.name for activity in getActivities($viewValue)" typeahead-loading="loadingLocations" class="form-control" typeahead-min-length="3" typeahead-on-select="" required ng-minlength="2">
+		<label ng-show="false">Maximum characters is 30</label>
+	</div>
+	<!-- Place/Location -->
+	<div class="form-group">
+		<label class="form-label">Where</label>
+		<input type="text" ng-model="newActivity.place" placeholder="Place" typeahead="places as places.name for places in getPlaces($viewValue)" typeahead-loading="loadingLocations" class="form-control" typeahead-min-length="3" typeahead-on-select="">
+	</div>
+	<!-- Senses -->
+	<label class="form-label">Senses</label>
+	<hr class="form-label-line">
+	<div class="form-group senses-group">
+		<div class="sense-button see sense-button-inactive" ng-click="senseClick('see')" ng-class="{selected: senses.see}" ui-sense-hover>
+			<span class="glyphicon glyphicon-eye-open"></span>
+		</div>
+		<div class="sense-button smell sense-button-inactive" ng-click="senseClick('smell')" ng-class="{selected: senses.smell}">
+			<span class="fa fa-music"></span>
+		</div>
+		<div class="sense-button taste sense-button-inactive" ng-click="senseClick('taste')" ng-class="{selected: senses.taste}">
+			<span class="fa fa-cutlery"></span>
+		</div>
+		<div class="sense-button hear sense-button-inactive" ng-click="senseClick('hear')" ng-class="{selected: senses.hear}">
+			<span class="fa fa-pagelines" ></span>
+		</div>
+		<div class="sense-button touch sense-button-inactive" ng-click="senseClick('touch')" ng-class="{selected: senses.touch}">
+			<span class="fa fa-hand-o-right"></span>
+		</div>
+	</div>
+	<!-- Time -->
+	<div class="form-group">
+		<label class="form-label">Time</label>
+		<hr class="form-label-line">
+		<!-- Activity -->
+		<div class="form-group activity-time">
+			<button type="button" class="btn btn-default time-dropdown" ng-model="newActivity.time" data-html="1" ng-options="timeItem.time for timeItem in activityTimeDropdown" bs-select ui-blur="activityTimeDropdownSelected(newActivity.time)">
+			Action <span class="caret"></span>
+			</button>
+			<div class="default-time" ng-show="showDefaultTime">
+				<div>
+					<label class="form-label form-label-sub">Start</label>
+					<input type="text" length="3" class="form-control time-input" ng-model="activityStartTime" data-autoclose="1" placeholder="Start" data-time-format="HH:mm" bs-timepicker>
+				</div>
+				<div>
+					<label class="form-label form-label-sub">End</label>
+					<input type="text" length="3" class="form-control time-input" ng-model="activityEndTime" data-autoclose="1" placeholder="End" data-time-format="HH:mm" bs-timepicker>
+				</div>
+			</div>
+		</div>
+		<!-- Date Specific -->
+		<div class="day-specific" ng-show="showDaySpecific">
+			<div class="day" ng-repeat="day in daySpecific">
+				<button type="button" class="btn btn-default btn-sm btn-day" ng-class="{'btn-primary': day.selected}" ng-model="day.selected" btn-checkbox>{{ day.day }}</button>
+				<button type="button" class="btn btn-default time-dropdown" ng-model="day.value" data-html="1" ng-options="dayItem.time for dayItem in daySpecificDropdown" bs-select ui-blur="daySpecificDropdownSelected(day)" ng-show="day.selected">
+				Action <span class="caret"></span>
+				</button>
+				<div class="default-time" ng-show="day.selected && day.showDefaultTime">
+					<div>
+						<input type="text" length="3" class="form-control time-input" ng-model="day.value.startTime" data-autoclose="1" placeholder="Start" data-time-format="HH:mm" bs-timepicker>
+					</div>
+					<div>
+						<input type="text" length="3" class="form-control time-input" ng-model="day.value.endTime" data-autoclose="1" placeholder="End" data-time-format="HH:mm" bs-timepicker>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-link" ng-click="cancel()">Cancel</button>
+	<button type="submit" class="btn btn-primary">Create Activity</button>
+</div>

@@ -1,0 +1,98 @@
+<div ng-include="'partials/navbar'"></div>
+<div ng-include="'partials/header'"></div>
+<div class="container">
+	<!-- Search Bar -->
+	<!-- <div class="input-group">
+				<span class="input-group-addon glyphicon glyphicon-search" id="search-icon"></span>
+				<input type="text" class="form-control" placeholder="Search" ng-model="input.search">
+	</div> -->
+	<div class="row">
+		<!-- Left Nav -->
+		<div class="col-md-1 action-bar">
+		</div>
+		<!-- First Column -->
+		<div class="col-md-5">
+			<div class="activity-card" ng-repeat="activity in exploreList | orderBy:'rating.percentage':true"  click-link="/activity/{{ activity._id }}" >
+				<div class="details" style="border-bottom-color: {{ activity.type.colour }};">
+					<div class="activity-header">
+						{{ activity.name }}
+					</div>
+					<div class="place-header">
+						{{ activity.place.name }}
+					</div>
+					<div class="meta">
+						<div class="rating" style="color: {{ activity.type.colour }}">
+							{{ activity.rating.percentage }}%
+						</div>
+						<div class="sense">
+							<span class="time-location">Now, {{ activity.location.distance }}</span>
+							<!-- {{ activity.type.sense }} -->
+							<span class="glyphicon glyphicon-eye-open"></span>
+						</div>
+					</div>
+				</div>
+				<div class="thumb">
+					<img src="{{ activity.images.thumbnail }}">
+				</div>
+				<div class="action-menu">
+					<div class="btn-action">
+					<span class="glyphicon glyphicon-search"></span>
+					</div>
+					<div class="btn-action">
+
+					<span class="glyphicon glyphicon-map-marker"></span>
+					</div>
+					<div class="btn-action">
+					<span class="glyphicon glyphicon-plus"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Second Column -->
+		<div class="col-md-5">
+			<div class="activity-card" ng-repeat="activity in exploreList | orderBy:'rating.percentage':true"  click-link="/activity/{{ activity._id }}" >
+				<div class="details" style="border-bottom-color: {{ activity.type.colour }};">
+					<div class="activity-header">
+						{{ activity.name }}
+					</div>
+					<div class="place-header">
+						{{ activity.place.name }}
+					</div>
+					<div class="meta">
+						<div class="rating" style="color: {{ activity.type.colour }}">
+							{{ activity.rating.percentage }}%
+						</div>
+						<div class="sense">
+							<span>Now, {{ activity.location.distance }}</span>
+							<!-- {{ activity.type.sense }} -->
+							<span class="glyphicon glyphicon-eye-open"></span>
+						</div>
+					</div>
+				</div>
+				<div class="thumb">
+					<img src="{{ activity.images.thumbnail }}">
+				</div>
+			</div>
+		</div>
+		<!-- Right Nav -->
+		<div class="col-md-1 action-bar">
+			<button type="button" class="btn btn-default" data-placement="left" data-type="info" data-animation="am-fade-and-scale" delay="500" data-title="Hello World" bs-tooltip>
+			<span class="glyphicon glyphicon-search"></span>
+			</button>
+			<button type="button" class="btn btn-default">
+			<span class="glyphicon glyphicon-map-marker"></span>
+			</button>
+			<button type="button" class="btn btn-default">
+			<span class="glyphicon glyphicon-plus"></span>
+			</button>
+		</div>
+	</div>
+	
+	<!-- Add Activity -->
+	<!-- <br>
+	<button type="button" class="btn btn-default center-block">
+		<span class="glyphicon glyphicon-plus"></span>
+	</button> -->
+	<div ng-include="'partials/footer'"></div>
+	
+</div>

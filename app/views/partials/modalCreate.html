@@ -1,0 +1,11 @@
+<div name="form" class="modal-create">
+	<div class="modal-header">
+		<span class="modal-title">Create an: &nbsp</span>
+		<div class="btn-group">
+			<label class="btn" ng-class="{'btn-primary': type==='Activity', 'btn-default': type==='Event'}" ng-model="type" btn-radio="'Activity'">Activity</label>
+			<label class="btn" ng-class="{'btn-default': type==='Activity', 'btn-primary': type==='Event'}"  ng-model="type" btn-radio="'Event'">Event</label>
+		</div>
+	</div>
+	<form ng-include="'partials/_createActivity'" ng-show="type==='Activity'" name="activityForm" ng-submit="createActivity()"></form>
+	<form ng-include="'partials/_createEvent'" ng-show="type==='Event'" name="eventForm"></form>
+</div>

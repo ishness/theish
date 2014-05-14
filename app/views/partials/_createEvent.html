@@ -1,0 +1,62 @@
+<div class="modal-body">
+		<!-- Event Name -->
+		<div class="form-group">
+			<label class="form-label">What</label>
+			<input type="text" ng-model="name" placeholder="{{type}} Name" typeahead="activity as activity.name for activity in getActivities($viewValue)" typeahead-loading="loadingLocations" class="form-control" typeahead-min-length="3" typeahead-on-select='onSelect($item, $model, $label)' typeahead-editable="false" ui-blur="inputLeave()" ng-change="inputChange()" required ng-minlength="2">
+			<label ng-show="false">Maximum characters is 30</label>
+		</div>
+		<!-- Place/Location -->
+		<div class="form-group">
+			<label class="form-label">Where</label>
+			<input type="text" ng-model="place" placeholder="Place" typeahead-editable="false" typeahead="places as places.name for places in getPlaces($viewValue)" typeahead-loading="loadingLocations" class="form-control" typeahead-min-length="3" typeahead-on-select='placeOnSelect($item)' ui-blur="inputLeave()" ng-change="inputChange()">
+		</div>
+		<!-- Senses -->
+		<label class="form-label">Senses</label>
+		<hr class="form-label-line">
+		<div class="form-group senses-group">
+			<div class="sense-button see sense-button-inactive" ng-click="senseClick('see')" ng-class="{selected: senses.see}" ui-sense-hover>
+				<span class="glyphicon glyphicon-eye-open"></span>
+			</div>
+			<div class="sense-button smell sense-button-inactive" ng-click="senseClick('smell')" ng-class="{selected: senses.smell}">
+				<span class="fa fa-music"></span>
+			</div>
+			<div class="sense-button taste sense-button-inactive" ng-click="senseClick('taste')" ng-class="{selected: senses.taste}">
+				<span class="fa fa-cutlery"></span>
+			</div>
+			<div class="sense-button hear sense-button-inactive" ng-click="senseClick('hear')" ng-class="{selected: senses.hear}">
+				<span class="fa fa-pagelines" ></span>
+			</div>
+			<div class="sense-button touch sense-button-inactive" ng-click="senseClick('touch')" ng-class="{selected: senses.touch}">
+				<span class="fa fa-hand-o-right"></span>
+			</div>
+		</div>
+		<!-- Time -->
+		<div class="form-group">
+			<label class="form-label">Time</label>
+			<hr class="form-label-line">
+			<!-- Event -->
+			<div class="event-time">
+				<!-- Date -->
+				<!-- Start -->
+				<div class="form-group date-time-input">
+					<label class="form-label form-label-sub">Start</label>
+					<div>
+						<input type="text"class="form-control date-input" ng-model="eventStartDate" data-autoclose="1" placeholder="Date" start-week="1" min-date="today" bs-datepicker>
+						<input type="text" size="8" class="form-control time-input" ng-model="eventStartDate" data-autoclose="1" placeholder="Time" data-time-format="HH:mm" bs-timepicker>
+					</div>
+				</div>
+				<!-- End -->
+				<div class="form-group date-time-input">
+					<label class="form-label form-label-sub">End</label>
+					<div>
+						<input type="text"class="form-control date-input" ng-model="eventEndDate" data-autoclose="1" placeholder="Date" start-week="1" min-date="today" bs-datepicker>
+						<input type="text" size="8" class="form-control time-input" ng-model="eventEndDate" data-autoclose="1" placeholder="Time" data-time-format="HH:mm" bs-timepicker>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-link" ng-click="cancel()">Cancel</button>
+		<button class="btn btn-primary" ng-click="ok()">Create Event</button>
+	</div>
