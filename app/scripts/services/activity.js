@@ -125,6 +125,9 @@ angular.module('theIshApp')
     return {
         createActivity: function(newActivity) {
             return $http.post('/api/v1/activities/create', newActivity);
+        },
+        editActivity: function(activityId, data) {
+            return $http.put('/api/v1/activities/' + activityId + '/edit', data);
         }
     }
 });

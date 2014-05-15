@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('theIshApp')
-    .controller('ActivityCtrl', function($scope, $routeParams, $location, $anchorScroll, ActivityLink, Activity) {
+    .controller('ActivityCtrl', function($scope, $routeParams, $location, $anchorScroll, ActivityLink, Activity, ApiV1) {
         // Save this for later 
         // $scope.activity = ActivityLink.getLink();
         $scope.activity = Activity.get({
@@ -27,6 +27,15 @@ angular.module('theIshApp')
             $scope.showReview = !$scope.showReview;
             console.log($scope.showReview);
 
+        };
+
+        $scope.updateDescription = function(data) {
+            console.log(data);
+            return ApiV1.editActivity($scope.activity._id, {
+                info: {
+                    description: data
+                }
+            })
         };
     })
     .controller('CreateCtrl', function($scope, $http) {

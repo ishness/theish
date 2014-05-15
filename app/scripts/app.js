@@ -77,7 +77,14 @@ angular.module('theIshApp', [
             }
         ]);
     })
-    .run(function($rootScope, $location, Auth) {
+    .run(function($rootScope, $location, Auth, editableOptions, editableThemes) {
+
+        // set `default` theme
+        editableOptions.theme = 'bs3';
+
+        // overwrite submit button template
+        editableThemes['bs3'].buttonsTpl = '<div class="editable-buttons"></div>';
+        // editableThemes['bs3'].cancelTpl = '<button type="button" class="btn btn-default btn-link" ng-click="$form.$cancel()">Cancel</button>';
 
         // Redirect to login if route requires auth and you're not logged in
         $rootScope.$on('$routeChangeStart', function(event, next) {
@@ -86,4 +93,6 @@ angular.module('theIshApp', [
                 $location.path('/login');
             }
         });
+
+
     });

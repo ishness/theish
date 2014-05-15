@@ -984,5 +984,19 @@ $map-height: 300px;
     }
 }
 
+//---------------------------------
+// Inline Editor
+//---------------------------------
+
+
+.editable-textarea {
+    width: 100%;
+    // height: 500px;s
+    .editable-controls {
+        @include flexbox;
+        @include flex-direction(column);
+    }
+}
+
 
 

@@ -64,4 +64,23 @@ angular.module('theIshApp')
             scope.$apply(attrs.uiBlur);
         });
     };
+})
+
+.directive('editTextarea', function() {
+    return {
+        restrict: 'A',
+        replace: false,
+        template: '<a>Directive</a>',
+        scope: {
+
+        },
+        link: function(scope, elem, attrs) {
+            console.log('editTextarea Directive');
+            console.log(elem);
+
+        },
+        controller: function($scope) {
+
+        }
+    }
 });

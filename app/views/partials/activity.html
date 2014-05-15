@@ -28,9 +28,9 @@
         <div class="section-body">
           <div class="description">
             <div class="edit-description text-right">
-              <a>[Edit]</a>
+              <a ng-click="descriptionBtnEdit.$show()" ng-hide="descriptionBtnEdit.$visible">[Edit]</a>
             </div>
-            <p class="multiline-text" editable-textarea="activity.info.description">{{ activity.info.description }}</p>
+            <p class="multiline-text" editable-textarea="activity.info.description" e-form="descriptionBtnEdit" onbeforesave="updateDescription($data)">{{ activity.info.description }}</p>
           </div>
           <div class="meta">
             <div class="edit-description text-right">
