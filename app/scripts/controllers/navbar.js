@@ -1,43 +1,43 @@
 'use strict';
 
-angular.module('theIshApp')
-    .controller('NavbarCtrl', function($scope, $location, $modal, Auth) {
-        $scope.menu = [{
-            'title': 'Explore',
-            'link': '/home'
-        }, {
-            'title': 'Create',
-            'link': '/create'
-        }, {
-            'title': 'Profile',
-            'link': '/profile'
-        }];
+angular.module('theIshApp') //
+.controller('NavbarCtrl', function($scope, $location, $modal, Auth) {
+    $scope.menu = [{
+        'title': 'Explore',
+        'link': '/home'
+    }, {
+        'title': 'Create',
+        'link': '/create'
+    }, {
+        'title': 'Profile',
+        'link': '/profile'
+    }];
 
-        $scope.logout = function() {
-            Auth.logout()
-                .then(function() {
-                    $location.path('/login');
-                });
-        };
-
-        $scope.isActive = function(route) {
-            return route === $location.path();
-        };
-
-        $scope.items = ['item1', 'item2', 'item3'];
-
-        $scope.openCreateModal = function(size) {
-
-            var modalInstance = $modal.open({
-                templateUrl: '/partials/modalCreate.html',
-                controller: 'ModalCreateCtrl',
-                backdrop: 'static',
-                size: 'sm'
+    $scope.logout = function() {
+        Auth.logout()
+            .then(function() {
+                $location.path('/login');
             });
+    };
 
-            return false;
-        };
-    });
+    $scope.isActive = function(route) {
+        return route === $location.path();
+    };
+
+    $scope.items = ['item1', 'item2', 'item3'];
+
+    $scope.openCreateModal = function(size) {
+
+        var modalInstance = $modal.open({
+            templateUrl: '/partials/modalCreate.html',
+            controller: 'ModalCreateCtrl',
+            backdrop: 'static',
+            size: 'sm'
+        });
+
+        return false;
+    };
+});
 
 
 var ModalCreateCtrl = function($scope, $modalInstance, $http, $location, AutoComplete, Place, ApiV1) {

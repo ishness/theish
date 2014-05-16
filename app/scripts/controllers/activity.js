@@ -37,6 +37,15 @@ angular.module('theIshApp')
                 }
             })
         };
+
+        $scope.reviewActivity = function(review) {
+            console.log(review);
+            return ApiV1.reviewActivity($scope.activity._id, {
+                vote: review.vote,
+                tagline: review.tagLine,
+                review: review.review
+            });
+        }
     })
     .controller('CreateCtrl', function($scope, $http) {
         $scope.location = 'Create';

@@ -128,6 +128,9 @@ angular.module('theIshApp')
         },
         editActivity: function(activityId, data) {
             return $http.put('/api/v1/activities/' + activityId + '/edit', data);
+        },
+        reviewActivity: function(activityId, review) {
+            return $http.post('/api/v1/activites/' + activityId + '/reviews/add', review);
         }
     }
 });
