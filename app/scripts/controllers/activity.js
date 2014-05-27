@@ -43,7 +43,7 @@ angular.module('theIshApp')
             return ApiV1.reviewActivity($scope.activity._id, {
                 vote: review.vote,
                 tagline: review.tagLine,
-                review: review.review
+                body: review.body
             });
         }
     })

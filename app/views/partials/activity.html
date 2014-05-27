@@ -60,7 +60,7 @@
           </div>
           <span class="pull-right full-80 glyphicon glyphicon-chevron-right"></span>
         </div>
-        <div class="review-form" ng-show="showReview" id="review-form">
+        <div class="review-form" ng-show="showReview" id="review-form" name="reviewForm" ng-submit="reviewActivity(newReview)">
           <form class="row">
             <div class="col-xs-6 col-xs-offset-3">
               <div class="row form-group">
@@ -76,10 +76,10 @@
                 </div>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Tagline">
+                <input type="text" class="form-control" placeholder="Tagline" ng-model="newReview.tagLine">
               </div>
               <div class="form-group">
-                <textarea class="form-control" rows="5" placeholder="Your Review"></textarea>
+                <textarea class="form-control" rows="5" placeholder="Your Review" ng-model="newReview.body"></textarea>
               </div>
               <div class="form-group">
                 <button type="button" class="btn btn-default btn-block" style="text-align:left; padding-left:10px;">
